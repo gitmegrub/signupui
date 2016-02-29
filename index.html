@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Outsourced Requirements</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="//code.angularjs.org/1.4.0/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+  <script src="script.js"></script>
+</head>
+<body class="container" ng-app="app" ng-controller="MainCtrl as main">
+  
+  <div class="well well-sm text-center">
+    <h3>Online Shopping Service, Inc</h3>
+  </div>
+  
+  <form name="userForm" novalidate>
+    
+    <div class="form-group" ng-class="{ 'has-error': userForm.usertitle.$touched && userForm.usertitle.$invalid }">
+      <label>Title</label>
+      <input type="text" name="usertitle" class="form-control" 
+        placeholder="Salutation / Title"
+        ng-model="main.usertitle"
+        ng-minlength="2"
+        ng-maxlength="15"
+        required>
+        
+      <div class="help-block" ng-messages="userForm.usertitle.$error" ng-if="userForm.usertitle.$touched">
+        <div ng-messages-include="errTitle.html"></div>
+      </div>
+    </div>
+    
+    <div class="form-group" ng-class="{ 'has-error': userForm.fname.$touched && userForm.fname.$invalid }">
+      <label>Firstname</label>
+      <input type="text" name="fname" class="form-control" 
+        placeholder="Juan"
+        ng-model="main.fname"
+        ng-minlength="2"
+        ng-maxlength="30"
+        required>
+        
+      <div class="help-block" ng-messages="userForm.fname.$error" ng-if="userForm.fname.$touched">
+        <div ng-messages-include="errNames.html"></div>
+      </div>
+    </div>
+    
+    <div class="form-group" ng-class="{ 'has-error': userForm.sname.$touched && userForm.sname.$invalid }">
+      <label>Surname</label>
+      <input type="text" name="sname" class="form-control" 
+        placeholder="de la Cruz"
+        ng-model="main.sname"
+        ng-minlength="2"
+        ng-maxlength="30"
+        required>
+        
+      <div class="help-block" ng-messages="userForm.sname.$error" ng-if="userForm.sname.$touched">
+        <div ng-messages-include="errNames.html"></div>
+      </div>
+    </div>
+    
+    <div class="form-group" ng-class="{ 'has-error': userForm.street.$touched && userForm.street.$invalid }">
+      <label>Street Address</label>
+      <input type="text" name="street" class="form-control" 
+        placeholder="Street Address"
+        ng-model="main.street"
+        required>
+        
+      <div class="help-block" ng-messages="userForm.street.$error" ng-if="userForm.street.$touched">
+        <div ng-messages-include="errAddress.html"></div>
+      </div>
+    </div>
+    
+    <div class="form-group" ng-class="{ 'has-error': userForm.town.$touched && userForm.town.$invalid }">
+      <label>Town / City</label>
+      <input type="text" name="town" class="form-control" 
+        placeholder="Town or City"
+        ng-model="main.town"
+        required>
+        
+      <div class="help-block" ng-messages="userForm.town.$error" ng-if="userForm.town.$touched">
+        <div ng-messages-include="errAddress.html"></div>
+      </div>
+    </div>
+    
+    <div 
+      class="form-group" 
+      ng-class="{ 'has-error': userForm.bday.$touched && userForm.bday.$invalid }">
+      <label for="dateselect">Birthdate</label>
+      <br>
+      <input 
+        type="date" 
+        id="dateselect" 
+        name="bday" 
+        ng-model="main.bday"
+        placeholder="yyyy-MM-dd"
+        required />
+        
+      <div class="help-block" ng-messages="userForm.bday.$error" ng-if="userForm.bday.$touched">
+        <div ng-messages-include="errDateChecks.html"></div>
+        
+      </div>
+      
+    </div>
+    
+    <div class="form-group" ng-class="{ 'has-error': userForm.age.$touched && userForm.age.$invalid }">
+      <label>Disclaimer: </label>
+      <br/>
+     <label>I am at least 18 years old.
+     <input 
+        type="checkbox"
+        name="age"
+        ng-model="main.age" 
+        required />
+     </label>
+     <div class="help-block" ng-messages="userForm.age.$error" ng-if="userForm.age.$touched">
+        <div ng-messages-include="errAgeChecks.html"></div>
+    </div>
+     
+    </div>
+    
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+    </div>
+    
+  </form>
+  
+  
+</body>
+</html>
